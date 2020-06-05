@@ -1,6 +1,6 @@
 #include<bits/stdc++.h>
-#define MAX_V 10000
-#define MAX_A 100000
+#define MAX_V 10010
+#define MAX_A 100010
 
 using namespace std;
 	
@@ -11,7 +11,7 @@ typedef struct{
 TAdj adj[MAX_A];
 TAdj mst[MAX_A]; //armazena a MST
 int p[MAX_V];
-int nro_arestas, total, posMst;
+long long int nro_arestas, total, posMst;
 	
 void aresta(int u, int v, int w)
 {
