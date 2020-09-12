@@ -1,7 +1,4 @@
-#include<iostream>
-#include<vector>
-#include<map>
-
+#include<bits/stdc++.h>
 using namespace std;
 
 int B[11];
@@ -10,30 +7,30 @@ int D[11];
 int A[11];
 int m;
 
-int memo[1001][11];
+int memo[1005][11]; // [massa][recheio]
 
-int pd(int n, int recheio)
+int pd(int n, int r)
 {
-	if (n <= 0 || recheio == -1)	//A[0] = qtde de massa disponível
+	if (n <= 0 || r == -1)	//A[0] = qtde de massa disponivel
 		return 0;
-	if (memo[n][recheio] != -1)
-		return memo[n][recheio];
+	if (memo[n][r] != -1)
+		return memo[n][r];
 	int maxx = 0;
 	
-	if (recheio == 0)
+	if (r == 0)
 	{
 		maxx = (n/C[0])*D[0];
 	}
 	else
 	{
 		int i = 0;
-		while(i*B[recheio] <= A[recheio] && i*C[recheio] <= n)
+		while(i*B[r] <= A[r] && i*C[r] <= n)
 		{
-			maxx = max(maxx, i*D[recheio] + pd(n - i*C[recheio], recheio - 1));
+			maxx = max(maxx, i*D[r] + pd(n - i*C[r], r - 1));
 			i++;
 		}
 	}
-	memo[n][recheio] = maxx;
+	memo[n][r] = maxx;
 	return maxx;
 }
 
